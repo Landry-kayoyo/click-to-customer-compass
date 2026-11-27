@@ -141,7 +141,7 @@ function AddSaasDialog({ open, onOpenChange, onCreated }: { open: boolean; onOpe
   const submit = (e: React.FormEvent) => {
     e.preventDefault();
     const p = saasInput.safeParse(form);
-    if (!p.success) return toast.error(p.error.issues[0]?.path[0] === "name" ? "Nom requis" : "URL invalide");
+    if (!p.success) { toast.error(p.error.issues[0]?.path[0] === "name" ? "Nom requis" : "URL invalide"); return; }
     m.mutate(form);
   };
   return (
